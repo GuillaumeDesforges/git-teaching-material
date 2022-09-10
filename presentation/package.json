@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build:pdf": "marp src/slides.md -o dist/slides.pdf",
+    "build:html": "marp src/slides.md -o dist/slides.html",
+    "build": "yarn build:pdf && yarn build:html"
+  },
+  "dependencies": {
+    "@marp-team/marp-cli": "^2.1.2",
+    "markdown-it-mermaid": "^0.2.5"
+  }
+}
