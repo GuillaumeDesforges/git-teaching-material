@@ -1,5 +1,6 @@
 { stdenv
 , mkYarnPackage
+, marp-cli
 }:
 
 stdenv.mkDerivation {
@@ -8,9 +9,8 @@ stdenv.mkDerivation {
 
   src = ./.;
 
-  nativeBuildInputs = [];
-
   installPhase = ''
-    cp -r dist/ $out/
+    mkdir -p $out/
+    ${marp-cli}/bin/marp src/slides.md -o $out/slides.html
   '';
 }

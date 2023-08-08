@@ -17,14 +17,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-ks7dUJktkZc+X6DRPG9h3bcxNxEFOO0ik2BBupqUOOo=",
-        "path": "/nix/store/78n6xdchpc0ykc9vpm4vmfmlxvsqnair-source",
-        "type": "path"
+        "lastModified": 1690368718,
+        "narHash": "sha256-8ed+qHBSuogc1Q9T4PMDxV8kNLhXYbg6QTClxwmsSSw=",
+        "owner": "GuillaumeDesforges",
+        "repo": "nixpkgs",
+        "rev": "9f9c11e6dacaf8fc0beb9429e071f727ff7edeed",
+        "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "GuillaumeDesforges",
+        "ref": "marp-cli",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "root": {
