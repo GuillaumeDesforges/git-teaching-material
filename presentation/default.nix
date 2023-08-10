@@ -1,6 +1,7 @@
 { stdenv
 , mkYarnPackage
 , marp-cli
+, google-chrome
 }:
 
 stdenv.mkDerivation {
@@ -9,8 +10,17 @@ stdenv.mkDerivation {
 
   src = ./.;
 
+  nativeBuildInputs = [
+    marp-cli
+  ];
+
+  # required to build PDF
+  # CHROME_PATH = "${google-chrome}/bin/google-chrome-stable";
+
   installPhase = ''
     mkdir -p $out/
-    ${marp-cli}/bin/marp src/slides.md -o $out/slides.html
+    marp --html --engine ./marp.config.js src/slides.md -o $out/slides.html
+    # can't build PDF: requires an internet connection but build is sandboxed
+    # marp --html --engine ./marp.config.js src/slides.md -o $out/slides.pdf
   '';
 }

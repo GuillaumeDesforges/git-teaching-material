@@ -1,6 +1,3 @@
 const marpKrokiPlugin = require('./kroki-plugin')
 
-module.exports = {
-    html: true,
-    engine: ({ marp }) => marp.use(marpKrokiPlugin),
-}
+module.exports = ({ marp }) => marp.use(marpKrokiPlugin)

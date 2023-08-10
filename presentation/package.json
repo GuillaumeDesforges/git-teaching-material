@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "build:pdf": "marp src/slides.md -o dist/slides.pdf",
-    "build:html": "marp src/slides.md -o dist/slides.html",
-    "build": "yarn build:pdf && yarn build:html"
+    "build:pdf": "marp --html --engine ./marp.config.js src/slides.md -o dist/slides.pdf",
+    "build:html": "marp --html --engine ./marp.config.js src/slides.md -o dist/slides.html",
+    "build": "yarn build:pdf && yarn build:html",
+    "dev": "marp --html --engine ./marp.config.js --server ."
   },
   "dependencies": {
     "@marp-team/marp-cli": "^2.1.2",
