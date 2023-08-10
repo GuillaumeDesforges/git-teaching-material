@@ -209,10 +209,10 @@ We call it a **diff**.
 output:
 
 ```
-diff --git a/hello.txt b/hello.txt
+diff --git a/song.txt b/hello.txt
 index 18249f3..af5626b 100644
---- a/hello.txt
-+++ b/hello.txt
+--- a/song.txt
++++ b/song.txt
 @@ -1 +1 @@
 -Hello world.
 +Hello, world!
@@ -229,7 +229,7 @@ From version `v1`
       commit id: "v1"
 ```
 
-`hello.txt`:
+`song.txt`:
 ```
 Hello world.
 ```
@@ -246,7 +246,7 @@ Edit files
       commit id: "unstaged changes" type: HIGHLIGHT
 ```
 
-`hello.txt`:
+`song.txt`:
 
 ```
 Hello, world!
@@ -265,7 +265,7 @@ On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        modified:   hello.txt
+        modified:   song.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")```
 ```
@@ -274,7 +274,7 @@ no changes added to commit (use "git add" and/or "git commit -a")```
 
 # How to create a commit
 
-Add to index: `git add hello.txt`
+Add to index: `git add song.txt`
 
 ```mermaid { style="height:200px;" }
     gitGraph
@@ -295,7 +295,7 @@ $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        modified:   hello.txt
+        modified:   song.txt
 ```
 
 ---
@@ -314,7 +314,7 @@ Commit to a new version: `git commit -m "v2"`
 
 # How to create a commit
 
-* `git add hello.txt`
+* `git add song.txt`
 * `git commit -m "v2"`
 * tip: use `git status` often
 
@@ -603,6 +603,9 @@ It's like _deleting_ commits.
 
 # What if they are not compatible?
 
+<div style="display: flex; flex-direction: row;">
+<div style="flex-grow: 1; padding: 1em;">
+
 From `v1` to `v4`
 
 ```diff
@@ -624,13 +627,61 @@ From `v1` to `v6` (merged)
 + Never gonna give you up nor let you down
 ```
 
+* It is called a **conflict**
+
+</div>
+<div style="flex-grow: 1; padding: 1em; display: flex; flex-direction: row; align-items: center;">
+
+<div style="flex-grow: 1;">
+
+```mermaid { style="height:300px;" }
+    gitGraph
+      commit id: "v1"
+      commit id: "v2"
+      branch alternative
+      checkout alternative
+      commit id: "v3"
+      checkout main
+      commit id: "v4"
+      checkout alternative
+      commit id: "v5"
+      checkout main
+      merge alternative
+      commit id: "v6" tag: "HEAD"
+```
+
+</div>
+
+</div>
+</div>
+
 ---
 
 # What if they are not compatible?
 
-* It is called a **conflict**
+- It is called a **conflict**
 * Practical session will cover how to handle it
 * `git` was _made_ to handle conflicts properly, it's its strength: don't dodge it!
+
+---
+
+# What if they are not compatible?
+
+How it looks like
+
+```diff
+$ git merge alternative 
+Auto-merging song.txt
+CONFLICT (content): Merge conflict in song.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+$ cat song.txt 
+<<<<<<< HEAD
+Never gonna give you up
+=======
+Never gonna let you down
+>>>>>>> alternative
+```
 
 ---
 
