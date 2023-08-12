@@ -1,12 +1,13 @@
 {
   "scripts": {
-    "build:pdf": "marp --html --engine ./marp.config.js src/slides.md -o dist/slides.pdf",
-    "build:html": "marp --html --engine ./marp.config.js src/slides.md -o dist/slides.html",
+    "build:pdf": "marp --html --engine ./engine.mjs src/slides.md -o dist/slides.pdf",
+    "build:html": "marp --html --engine ./engine.mjs src/slides.md -o dist/slides.html",
     "build": "yarn build:pdf && yarn build:html",
     "dev": "marp --html --engine ./marp.config.js --server ."
   },
   "dependencies": {
-    "@marp-team/marp-cli": "^2.1.2",
-    "markdown-it-mermaid": "^0.2.5"
+    "@marp-team/marp-cli": "git+https://github.com/GuillaumeDesforges/marp-cli#converter-async-render",
+    "@mermaid-js/mermaid-cli": "^10.3.0",
+    "jsdom": "^22.1.0"
   }
 }
