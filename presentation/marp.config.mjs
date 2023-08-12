@@ -20,7 +20,13 @@ function execWhich(command) {
 async function renderSvgMermaid(graphDefinition) {
     const googleChromePath = await execWhich("google-chrome-stable")
     const browser = await puppeteer.launch({ executablePath: googleChromePath, headless: "new" })
-    const { data } = await renderMermaid(browser, graphDefinition, "svg");
+    const { data } = await renderMermaid(browser, graphDefinition, "svg", {
+        myCSS: `
+            .__mermaid svg .label text {
+                fill: white !important;
+            }
+        `
+    });
     await browser.close()
     return data.toString("utf8");
 }
@@ -34,9 +40,7 @@ async function marpMermaidPlugin(md) {
             const [_, lang, divOptions] = info.match(/(\w+)\s*(?:\{\s*(.+)\s*\})?/)
             if (lang == "mermaid") {
                 const graphDefinition = tokens[idx].content
-
-                // <marp-auto-scaling> is working only with Marp Core v3
-                return `<p><marp-auto-scaling data-downscale-only><div class="mermaid-unprocessed">${graphDefinition}</div></marp-auto-scaling></p>`
+                return `<div class="__mermaid" ${divOptions}>${graphDefinition}</div>`
             }
         }
 
@@ -64,6 +68,23 @@ class PostprocessMarpitEngine extends Marp {
     }
 }
 
+export async function batchProcess(items, limit, fn) {
+    let results = [];
+    for (let start = 0; start < items.length; start += limit) {
+        const end = start + limit > items.length ? items.length : start + limit;
+
+        const slicedResults = await Promise.all(items.slice(start, end).map(fn));
+
+        results = [
+            ...results,
+            ...slicedResults,
+        ]
+    }
+
+    return results;
+}
+
+
 export default {
     engine: async (constructorOptions) =>
         new PostprocessMarpitEngine(constructorOptions)
@@ -72,17 +93,14 @@ export default {
                 // parse html to DOM
                 const doc = new jsdom.JSDOM(html)
                 // turn div.mermaid-unprocessed into processed
-                const mermaidUnprocessed = doc.window.document.querySelectorAll("div.mermaid-unprocessed")
-                const div = mermaidUnprocessed[0]
-                const graphDefinition = div.textContent
-                const svg = await renderSvgMermaid(graphDefinition)
-                div.outerHTML = svg
-
-                // for (const div of mermaidUnprocessed) {
-                //     const graphDefinition = div.textContent
-                //     const svg = await renderSvgMermaid(graphDefinition)
-                //     div.outerHTML = svg
-                // }
+                const mermaidUnprocessed = doc.window.document.querySelectorAll("div.__mermaid")
+                await batchProcess(Array.from(mermaidUnprocessed), 25, async (div) => {
+                    const graphDefinition = div.textContent
+                    const svg = await renderSvgMermaid(graphDefinition)
+                    div.innerHTML = svg
+                    div.children[0].setAttribute("width", "100%")
+                    div.children[0].setAttribute("height", "100%")
+                })
                 const processedHtml = doc.window.document.documentElement.outerHTML
                 return { html: processedHtml, css, comments }
             }),
