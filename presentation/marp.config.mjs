@@ -73,11 +73,16 @@ export default {
                 const doc = new jsdom.JSDOM(html)
                 // turn div.mermaid-unprocessed into processed
                 const mermaidUnprocessed = doc.window.document.querySelectorAll("div.mermaid-unprocessed")
-                for (const div of mermaidUnprocessed) {
-                    const graphDefinition = div.textContent
-                    const svg = await renderSvgMermaid(graphDefinition)
-                    div.outerHTML = svg
-                }
+                const div = mermaidUnprocessed[0]
+                const graphDefinition = div.textContent
+                const svg = await renderSvgMermaid(graphDefinition)
+                div.outerHTML = svg
+
+                // for (const div of mermaidUnprocessed) {
+                //     const graphDefinition = div.textContent
+                //     const svg = await renderSvgMermaid(graphDefinition)
+                //     div.outerHTML = svg
+                // }
                 const processedHtml = doc.window.document.documentElement.outerHTML
                 return { html: processedHtml, css, comments }
             }),

@@ -3,7 +3,7 @@
 
   # to be changed after PR is merged
   # https://github.com/NixOS/nixpkgs/pull/244504
-  inputs.nixpkgs.url = "github:GuillaumeDesforges/nixpkgs/marp-cli";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs = { self, nixpkgs, flake-utils, ... }:
