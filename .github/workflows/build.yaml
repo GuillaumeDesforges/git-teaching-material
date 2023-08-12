@@ -13,22 +13,13 @@ jobs:
     - uses: cachix/install-nix-action@v15
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix build
+    - run: NIXPKGS_ALLOW_UNFREE=1 nix build --impure -L
     - uses: actions/upload-artifact@v3
       with:
         name: instructions-pdf
         path: result/practical-session/instructions.pdf
-    # build slides manually
-    - run: nix shell nixpkgs#yarn --command yarn install
-      working-directory: presentation
-    - run: nix shell nixpkgs#yarn nixpkgs#chromium --command yarn build
-      working-directory: presentation
     - uses: actions/upload-artifact@v3
       with:
         name: slides-html
-        path: presentation/dist/slides.html
-    - uses: actions/upload-artifact@v3
-      with:
-        name: slides-pdf
-        path: presentation/dist/slides.pdf
+        path: result/dist/slides.html
 
