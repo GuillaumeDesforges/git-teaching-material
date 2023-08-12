@@ -683,6 +683,9 @@ Never gonna let you down
 >>>>>>> alternative
 ```
 
+* a conflict is purely "textual"
+* there is no conflict if diffs are the same on both sides
+
 ---
 
 # Recap
@@ -691,6 +694,7 @@ Never gonna let you down
 * create **commits** to keep track of _versions_ progressively
 * use **branches** to work on _alternative histories_
 * **merge** two branches to _merge both histories_ together
+* conflicts may happen: just solve them and move forward
 
 ---
 
