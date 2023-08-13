@@ -101,7 +101,11 @@ This has to be done by only one of the two partners, as it will be shared.
 
   - go to the "Collaborators" tab (under "Access" group in the left panel)
 
-    ![](./imgs/new-repo/Capture6.PNG)
+    ![](./imgs/new-repo/Capture6-1.PNG)
+
+    you might be required to authenticate via MFA (if not, skip this)
+
+    ![](./imgs/new-repo/Capture6-2.PNG)
 
   - click on "Add people"
 
