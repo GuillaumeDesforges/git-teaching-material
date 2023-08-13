@@ -48,6 +48,11 @@ We'll be using GitHub to get one for free.
 
 [https://github.com/](https://github.com/)
 
+#### Add your public SSH key to GitHub
+
+Read carefully and follow steps from the documentation:
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account 
+
 #### Create a GitHub project
 
 This has to be done by only one of the two partners, as it will be shared.
@@ -118,7 +123,8 @@ Copy this url, and clone it to your laptop, for example:
 git clone git@github.com:yourHandle/your-repo-name.git
 ```
 
-A folder must have been created. Move your working directory to it:
+A folder must have been created.
+Move your working directory to it:
 
 ```
 cd your-repo-name
