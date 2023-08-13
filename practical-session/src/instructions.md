@@ -50,50 +50,52 @@ This has to be done by only one of the two partners, as it will be shared.
 
 1. Create a repository
 
-   - click on "+" in the top right corner
+  - click on "+" in the top right corner
 
-     ![](./imgs/new-repo/Capture1.PNG)
+    ![](./imgs/new-repo/Capture1.PNG)
 
-   - click on "New repository"
+  - click on "New repository"
 
-     ![](./imgs/new-repo/Capture2.PNG)
+    ![](./imgs/new-repo/Capture2.PNG)
 
-     - you can name your repository however you want
-       > Usually, we use `kebab-case` (lowercase, spearated by hyphens `-`)
-     - write a description
-     - select "Private"
+  - you can name your repository however you want
+    > Usually, we use lowercase characters (`a`, `b`, `c`, ...) spearated by hyphens `-` instead of spaces.
+    > Example: if your project is name "My awesome Git project", name your repository `my-awesome-git-project`
+  - write a description
+    >
+  - select "Private"
 
-     ![](./imgs/new-repo/Capture3.PNG)
+    ![](./imgs/new-repo/Capture3.PNG)
 
-   - click on the "New repository" button at the end
+  - click on the "New repository" button at the end
 
-     ![](./imgs/new-repo/Capture4.PNG)
+    ![](./imgs/new-repo/Capture4.PNG)
 
 2. Give access to you partner
 
-   - go to the web page of your new repository (if you just created it, you should be on it already)
-   - go to the repository settings ("Settings" tab)
+  - go to the web page of your new repository (if you just created it, you should be on it already)
+  - go to the repository settings ("Settings" tab)
 
-     ![](./imgs/new-repo/Capture5.PNG)
+    ![](./imgs/new-repo/Capture5.PNG)
 
-   - go to the "Collaborators" tab (under "Access" group in the left panel)
+  - go to the "Collaborators" tab (under "Access" group in the left panel)
 
-     ![](./imgs/new-repo/Capture6.PNG)
+    ![](./imgs/new-repo/Capture6.PNG)
 
-   - click on "Add people"
+  - click on "Add people"
 
-     ![](./imgs/new-repo/Capture7.PNG)
+    ![](./imgs/new-repo/Capture7.PNG)
 
-   - find and add your partner
+  - find and add your partner
 
-     - type their GitHub "handle" in the text input
-     - suggestions should be shown, click on the right one
+    - type their GitHub "handle" in the text input
+    - suggestions should be shown, click on the right one
 
-     ![](./imgs/new-repo/Capture8.PNG)
+      ![](./imgs/new-repo/Capture8.PNG)
 
-     - when found, click on the button below "Add XXX to this repository"
+    - when found, click on the button below "Add XXX to this repository"
 
-     ![](./imgs/new-repo/Capture9.PNG)
+      ![](./imgs/new-repo/Capture9.PNG)
 
 #### Download the repository to your laptop
 
