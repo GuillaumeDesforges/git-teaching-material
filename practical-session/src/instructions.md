@@ -4,12 +4,22 @@
 
 ### Requirements
 
-You will need
+These exercises are designed to be done in pairs.
 
-- your own laptop with git installed
+Each will need
+
+- a laptop with git installed
+  - ["Installing Git"](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - a GitHub account with SSH keys installed
+  - ["Getting started with your GitHub account"](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
+  - ["Adding a new SSH key to your GitHub account"](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-You will be asked to open a terminal to use git commands.
+You will be asked to open a terminal (also called a "shell") to use git commands.
+- On Windows, you can use the "Windows Console" (`cmd.exe`), or on more recent version versions of Windows either "PowerShell" or the built-in "Terminal" application.
+- On MacOS, you can use the built-in "Terminal" application.
+- On Linux, use the terminal emulator of your choice.
+
+#### Configure git
 
 If you've never used git before, you will need to configure it on your laptop.
 Use the following commands (replace with your own information).
@@ -19,13 +29,18 @@ git config --global user.name "First name Last name"
 git config --global user.email firstname.lastname@example.com
 ```
 
-You should also make sure that the default name for the main branch is "main"
+You should also make sure that the default name for the main branch is "main".
 
 ```
 git config --global init.defaultBranch main
 ```
 
-Finally, these exercises are designed to be done in pairs, so you'll need a partner!
+By default, the editor used in the terminal could be "vim", which can be a bit rough for beginners.
+Change it to "nano" (read about [nano](https://help.ubuntu.com/community/Nano)).
+
+```
+git config --global core.editor "nano"
+```
 
 ### Agenda
 
@@ -47,11 +62,6 @@ Collaboration requires a remote repository.
 We'll be using GitHub to get one for free.
 
 [https://github.com/](https://github.com/)
-
-#### Add your public SSH key to GitHub
-
-Read carefully and follow steps from the documentation:
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account 
 
 #### Create a GitHub project
 
