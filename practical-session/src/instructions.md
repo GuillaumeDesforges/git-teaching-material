@@ -19,6 +19,12 @@ git config --global user.name "First name Last name"
 git config --global user.email firstname.lastname@example.com
 ```
 
+You should also make sure that the default name for the main branch is "main"
+
+```
+git config --global init.defaultBranch main
+```
+
 Finally, these exercises are designed to be done in pairs, so you'll need a partner!
 
 ### Agenda
