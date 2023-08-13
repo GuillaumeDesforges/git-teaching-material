@@ -162,12 +162,17 @@ We'll go through several scenarios which you will often encounter.
 
 One person will play the role of "computer 1" and the other the role of "computer 2".
 
+> Though the examples might seem trivial, pay special attention to understand what is happening.
+
 #### First scenario: collaboration without conflict
 
 We'll start with the simplest.
 
 - On computer 1
-  - Create a new file in the folder of the repository, with the following content: [script.py](./script.py)
+  - Create a new file in the folder of the repository, with the following Python script
+    ```python
+    print("Hello world")
+    ```
   - Commit this new file to your local history
   - Push this commit to the remote repository
 
@@ -175,7 +180,11 @@ You can check that the remote repository was properly updated by refreshing the 
 
 - On computer 2
   - Fetch these changes, check you have the proper `script.py` file locally
-  - Edit this file, for instance by removing line 8 ("Hello world")
+  - Edit `script.py`:
+    ```python
+    print("Hello world")
+    print("This is me")
+    ```
   - Commit these changes
   - Push this commit to the remote repository
 - On computer 1
@@ -183,37 +192,63 @@ You can check that the remote repository was properly updated by refreshing the 
 
 #### Second scenario: collaboration with conflict
 
+On the same repository
+
 - On computer 1
-  - Edit `script.py`, for instance change the name of function `main`
-  - Commit these changes
+  - Edit `script.py`:
+    ```python
+    print("Hello world")
+    print("This is me")
+    print("Life should be")
+    ```
+  - Commit this change
   - Push this commit to the remote repository
 - On computer 2
-  - Edit the same line as the other did to something different
+  - Edit `script.py`
+    ```python
+    print("Hello world")
+    print("This is me")
+    print("Fun for everyone")
+    ```
   - Commit these changes
   - Try to push this commit to the remote repository... it should fail!
-  - Fetch the changes from the remote repository and resolve conflicts
-    - See complete instructions on GitHub: ["Resolving a merge conflict using the command line"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line)
+  - Fetch the changes from the remote repository and resolve conflicts in order to have both lines added
+    - See complete instructions on GitHub:
+      ["Resolving a merge conflict using the command line"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line)
   - Push this commit to the remote repository
 - On computer 1
   - Fetch these changes, check that you have the updated `script.py` file locally
 
 #### Third scenario: use a Pull Request
 
+On the same repository
+
 - On computer 1
   - Create a new branch
   - Edit `script.py`
+    ```python
+    print("Hello world")
+    print("This is me")
+    print("Life should be")
+    print("Fun for everyone")
+    print("Hello world")
+    print("Come and see")
+    ```
   - Commit these changes
   - Push this commit to the remote repository
   - Go to GitHub web page, create a "Pull Request" from this new branch to the main branch
+    - See complete instructions on GitHub:
+      ["Creating a pull request"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
   - Assign your partner as a "Reviewer"
 - On computer 2
-  - Check out your notifications on GitHub ([https://github.com/notifications](https://github.com/notifications))
+  - Check out your notifications on GitHub
+    ([https://github.com/notifications](https://github.com/notifications))
   - Go to the Pull Request
-  - Add at least one comment to request changes
+  - Add a comment to the requested changes
     - Go to the "File changed" tab
     - Select multiple lines from the newly added lines
-      - Click on a liner number
-      - Hold "Shift" (or "Maj") and click on another line number
+      - Click on liner number "5"
+      - Hold "Shift" (or "Maj") and click on line number "6"
     - Move your mouse cursor to code of the last selected line, a blue "+" button should appear on its left
     - Click on the blue button, a new text box should appear
     - Write your comment in the text box about the changes you would like the other to make
