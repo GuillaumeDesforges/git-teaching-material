@@ -1,26 +1,39 @@
-{ stdenv
-, mkYarnPackage
-, marp-cli
-, google-chrome
+{ mkYarnPackage
+, fetchYarnDeps
+, which
+, chromium
+, fetchFromGitHub
 }:
 
-stdenv.mkDerivation {
+mkYarnPackage {
   name = "git-teaching-material-presentation";
-  version = "0.0.1";
 
   src = ./.;
 
+  offlineCache = fetchYarnDeps {
+    yarnLock = ./yarn.lock;
+    hash = "sha256-BBzPHPnO4jOR5jA6CKxZSj7Y5fJXRryPzcE9B8Jt8ZE=";
+  };
+
   nativeBuildInputs = [
-    marp-cli
+    which
+    chromium
   ];
 
-  # required to build PDF
-  # CHROME_PATH = "${google-chrome}/bin/google-chrome-stable";
+  buildPhase = ''
+    export HOME=$PWD/yarn_home
+    
+    export DEBUG="puppeteer:*"
+    export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+    export PUPPETEER_EXECUTABLE_PATH="${chromium}/bin/chromium"
+    # can't build PDF ("Navigation timeout of 30000 ms exceeded")
+    yarn --offline build:html
+  '';
+
+  # We don't need dist tarball.
+  distPhase = "true";
 
   installPhase = ''
-    mkdir -p $out/
-    marp --html --engine ./marp.config.js src/slides.md -o $out/slides.html
-    # can't build PDF: requires an internet connection but build is sandboxed
-    # marp --html --engine ./marp.config.js src/slides.md -o $out/slides.pdf
+    cp -R deps/*/dist/ $out
   '';
 }

@@ -1,12 +1,16 @@
 {
+  "name": "presentation",
+  "version": "0.1.0",
   "scripts": {
-    "build:pdf": "marp --html --engine ./marp.config.js src/slides.md -o dist/slides.pdf",
-    "build:html": "marp --html --engine ./marp.config.js src/slides.md -o dist/slides.html",
+    "build:pdf": "marp --html src/slides.md -o dist/slides.pdf",
+    "build:html": "marp --html src/slides.md -o dist/slides.html",
     "build": "yarn build:pdf && yarn build:html",
-    "dev": "marp --html --engine ./marp.config.js --server ."
+    "dev": "marp --html --server ."
   },
   "dependencies": {
-    "@marp-team/marp-cli": "^2.1.2",
-    "markdown-it-mermaid": "^0.2.5"
+    "@marp-team/marp-cli": "https://github.com/GuillaumeDesforges/marp-cli/releases/download/v3.2.0-gdforj.1/marp-team-marp-cli-v3.2.0-gdforj.1.tgz",
+    "@marp-team/marp-core": "^3.8.0",
+    "jsdom": "^22.1.0",
+    "puppeteer": "^21.0.3"
   }
 }

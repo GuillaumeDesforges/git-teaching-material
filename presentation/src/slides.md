@@ -112,13 +112,15 @@ Hello, world!
 
 # Visualizing versions
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
        commit id: "v1"
        commit id: "v2"
+       commit id: "v3"
 ```
 
 Version `v1` is followed by `v2`.
+Version `v2` is followed by `v3`.
 
 ---
 
@@ -166,14 +168,14 @@ We call it a **diff**.
 
 ---
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
 ```
 
 ---
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -181,7 +183,7 @@ We call it a **diff**.
 
 ---
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -224,7 +226,7 @@ index 18249f3..af5626b 100644
 
 From version `v1`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
 ```
@@ -240,7 +242,7 @@ Hello world.
 
 Edit files
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "unstaged changes" type: HIGHLIGHT
@@ -276,7 +278,7 @@ no changes added to commit (use "git add" and/or "git commit -a")```
 
 Add to index: `git add song.txt`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "index" type: HIGHLIGHT
@@ -304,7 +306,7 @@ Changes to be committed:
 
 Commit to a new version: `git commit -m "v2"`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -335,7 +337,7 @@ Commit to a new version: `git commit -m "v2"`
 
 # Cancel current changes
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -344,7 +346,7 @@ Commit to a new version: `git commit -m "v2"`
 
 `git reset`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -354,7 +356,7 @@ Commit to a new version: `git commit -m "v2"`
 
 # Reset to another version
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -363,7 +365,7 @@ Commit to a new version: `git commit -m "v2"`
 
 `git reset --hard v1`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
 ```
@@ -389,7 +391,7 @@ It's like _deleting_ commits.
 
 # Travel in the history
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -398,7 +400,7 @@ It's like _deleting_ commits.
 
 `git checkout v1`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1" tag: "HEAD"
       commit id: "v2"
@@ -409,7 +411,7 @@ It's like _deleting_ commits.
 
 # Travel in the history
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1" tag: "HEAD"
       commit id: "v2"
@@ -418,7 +420,7 @@ It's like _deleting_ commits.
 
 `git checkout main`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -444,7 +446,7 @@ It's like _deleting_ commits.
 
 # Working in parallel
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2" tag: "HEAD"
@@ -452,7 +454,7 @@ It's like _deleting_ commits.
 
 `git branch alternative`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2" tag: "HEAD"
@@ -463,7 +465,7 @@ It's like _deleting_ commits.
 
 # Working in parallel
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2" tag: "HEAD"
@@ -473,7 +475,7 @@ It's like _deleting_ commits.
 `git checkout alternative`
 `git commit -m "v3"`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -485,7 +487,7 @@ It's like _deleting_ commits.
 
 # Working in parallel
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -495,7 +497,7 @@ It's like _deleting_ commits.
 
 `git checkout main`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2" tag: "HEAD"
@@ -509,7 +511,7 @@ It's like _deleting_ commits.
 
 # Working in parallel
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2" tag: "HEAD"
@@ -521,7 +523,7 @@ It's like _deleting_ commits.
 
 `git commit -m "v4"`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -536,7 +538,7 @@ It's like _deleting_ commits.
 
 # Working in parallel
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -550,7 +552,7 @@ It's like _deleting_ commits.
 `git checkout alternative`
 `git commit -m "v5"`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -567,7 +569,7 @@ It's like _deleting_ commits.
 
 # Merging branches
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -583,7 +585,7 @@ It's like _deleting_ commits.
 `git checkout main`
 `git merge alternative`
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
     gitGraph
       commit id: "v1"
       commit id: "v2"
@@ -714,7 +716,7 @@ Never gonna let you down
 
 # What we _don't_ want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       commit id: "v1"
       branch Will
@@ -732,7 +734,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -744,7 +746,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -757,7 +759,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -774,7 +776,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -793,7 +795,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -815,7 +817,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -840,7 +842,7 @@ Never gonna let you down
 
 # What we want
 
-```mermaid { style="height:200px;" }
+```mermaid { style="height:500px;" }
     gitGraph
       checkout main
       commit id: "v1"
@@ -930,23 +932,26 @@ Remote or local store a whole _history_.
 
 # The workflow
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
 ```
@@ -959,24 +964,27 @@ Sarah:
 will: git commit -m "v1-will"
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
 ```
@@ -989,25 +997,28 @@ Sarah:
 will: git push
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
 ```
@@ -1020,25 +1031,28 @@ Sarah:
 sarah: git pull
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1052,26 +1066,29 @@ Sarah:
 will: git commit -m "v2-will"
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
       commit id: "v2-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1085,26 +1102,29 @@ Sarah:
 sarah: git commit -m "v2-sarah"
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
       commit id: "v2-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1119,17 +1139,19 @@ Sarah:
 will: git commit -m "v3-will"
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1137,9 +1159,10 @@ Will:
       commit id: "v3-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1154,9 +1177,10 @@ Sarah:
 will: git push
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1164,9 +1188,10 @@ Remote:
       commit id: "v3-will"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1174,9 +1199,10 @@ Will:
       commit id: "v3-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1192,9 +1218,10 @@ sarah: git pull
 -> CONFLICT!
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1202,9 +1229,10 @@ Remote:
       commit id: "v3-will"
 ```
 
-Sarah:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1219,12 +1247,13 @@ Sarah:
 sarah: git pull
 -> CONFLICT!
 ```
-
-Sarah:
 
 <!-- can't rename main branch because we render mermaid using kroki -->
 <!-- https://github.com/yuzutech/kroki/issues/1326 "Set mermaid configuration" -->
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
@@ -1244,11 +1273,12 @@ Sarah:
 sarah: Solve conflicts
 ```
 
-Sarah:
-
 <!-- can't rename main branch because we render mermaid using kroki -->
 <!-- https://github.com/yuzutech/kroki/issues/1326 "Set mermaid configuration" -->
-```mermaid { style="height:200px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
@@ -1271,9 +1301,10 @@ Sarah:
 sarah: git push
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
@@ -1290,9 +1321,10 @@ Remote:
       commit id: "v4-sarah"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       checkout main
       commit id: "v1-will"
@@ -1300,11 +1332,12 @@ Will:
       commit id: "v3-will"
 ```
 
-Sarah:
-
 <!-- can't rename main branch because we render mermaid using kroki -->
 <!-- https://github.com/yuzutech/kroki/issues/1326 "Set mermaid configuration" -->
-```mermaid { style="height:140px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
@@ -1327,9 +1360,10 @@ Sarah:
 will: git pull
 ```
 
-Remote:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Remote
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
@@ -1346,9 +1380,10 @@ Remote:
       commit id: "v4-sarah"
 ```
 
-Will:
-
-```mermaid { style="height:80px;" }
+```mermaid { style="height:180px;" }
+---
+title: Will
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
@@ -1364,12 +1399,13 @@ Will:
       merge sarah/main
       commit id: "v4-sarah"
 ```
-
-Sarah:
 
 <!-- can't rename main branch because we render mermaid using kroki -->
 <!-- https://github.com/yuzutech/kroki/issues/1326 "Set mermaid configuration" -->
-```mermaid { style="height:140px;" }
+```mermaid { style="height:180px;" }
+---
+title: Sarah
+---
     gitGraph
       commit id: "v1-will"
       branch sarah/main
