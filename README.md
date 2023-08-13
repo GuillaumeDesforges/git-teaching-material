@@ -13,7 +13,7 @@ Presentation takes ~1h, practical session takes ~1h30.
 ## Build
 
 ```
-nix build
+NIXPKGS_ALLOW_UNFREE=1 nix build --impure
 ```
 
 Results are in `./result`.
