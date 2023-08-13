@@ -81,9 +81,9 @@ This has to be done by only one of the two partners, as it will be shared.
 
   - you can name your repository however you want
     > Usually, we use lowercase characters (`a`, `b`, `c`, ...) spearated by hyphens `-` instead of spaces.
-    > Example: if your project is name "My awesome Git project", name your repository `my-awesome-git-project`
+    > Example: if your project is name "My awesome Git project", name your repository `my-awesome-git-project`.
   - write a description
-    >
+    > Usually a single sentence.
   - select "Private"
 
     ![](./imgs/new-repo/Capture3.PNG)
