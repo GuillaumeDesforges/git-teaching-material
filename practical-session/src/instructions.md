@@ -133,12 +133,26 @@ Copy this url, and clone it to your laptop, for example:
 git clone git@github.com:yourHandle/your-repo-name.git
 ```
 
-A folder must have been created.
-Move your working directory to it:
+where `your-repo-name` is replaced by the name of your own repository.
+
+A folder must have been created with this name (e.g. `your-repo-name`).
+
+Change your working directory to it:
 
 ```
 cd your-repo-name
 ```
+
+where `your-repo-name` is replaced by the name of your own repository.
+
+Congratulations!
+You just "cloned" the repository from the remote (GitHub).
+Right now this folder is empty, but soon enough we'll fill it with some files.
+
+> If you have enabled "See hidden files" option, notice the `.git` folder.
+>
+> git stores all the data it needs to manage the repository in this `.git` folder.
+> If you delete it, everything you haven't pushed will be lost forever!
 
 ### Hands-on
 
