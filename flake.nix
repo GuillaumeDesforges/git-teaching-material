@@ -13,10 +13,9 @@
       {
         packages.default = pkgs.runCommand "git-teaching-material" {} ''
           mkdir -p $out
-          cp -r ${self.packages.${system}.presentation} $out/presentation
           cp -r ${self.packages.${system}.practical-session} $out/practical-session
         '';
-        packages.presentation = pkgs.callPackage ./presentation {};
+        # packages.presentation = pkgs.callPackage ./presentation {};
         packages.practical-session = pkgs.callPackage ./practical-session {};
       }
     );
