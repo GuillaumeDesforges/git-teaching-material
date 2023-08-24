@@ -1443,3 +1443,11 @@ title: Sarah
 * Using git we will
   * keep track of your changes progressively
   * collaborate
+
+---
+
+# Go beyond
+
+* rebase
+* reflog
+* worktree
