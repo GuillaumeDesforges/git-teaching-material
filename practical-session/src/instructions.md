@@ -276,3 +276,101 @@ On the same repository
   - Delete the branch of the Pull Request
     - on the remote repository
     - locally
+
+#### Fourth scenario: rebase vs merge
+
+On the same repository
+
+- First read the [rebase documentation](https://git-scm.com/book/en/v2/Git-Branching-Rebasing), especially the first and last sections.
+
+- On computer 1
+  - Create a new branch named `sum`
+    - create a file `sum.py` with the following content
+      ```python
+      import numpy as np
+      import time
+
+      def sum(y):
+        res = 0
+        for yi in y:
+          res += yi
+        return res
+
+      def main():
+        y = np.random.rand(100000000)
+        start = time.time()
+        sum(y)
+        end = time.time()
+        print(f"Elasped time: {end - start}")
+
+      if __name__ == "__main__":
+        main()
+      ```
+  - Check that the code runs
+  - Commit these changes
+  - Push to the remote repository
+- On computer 2
+  - Fetch previous changes
+  - Create another branch `faster-sum` which starts from the `sum` branch (i.e. checkout `sum` then create the branch)
+  - Modify `sum.py` by adding the following function:
+    ```python
+    def faster_sum(y):
+      return np.sum(y)
+    ```
+  - Check that the code still runs
+  - Commit these changes
+  - Replace the `main` function by
+    ```python
+    def main():
+      y = np.random.rand(100000000)
+
+      start = time.time()
+      sum(y)
+      end = time.time()
+      python_time = end - start
+      print(f"Python sum: {python_time} s")
+
+      start = time.time()
+      faster_sum(y)
+      end = time.time()
+      numpy_time = end - start
+      print(f"Numpy sum: {numpy_time} s")
+
+      print(f"Numpy runs {python_time / numpy_time} times faster!")
+    ```
+  - Check that the code still runs
+  - Commit these changes
+  - Push to the remote repository
+- On computer 1
+  - **On branch `sum`**
+    - Modify the whole file as follows: 
+      ```python
+      import numpy as np
+      import time
+
+      def sum(y):
+        """Return the sum of all elements in array `y`."""
+        result = 0
+        for yi in y:
+          result += yi
+        return result
+
+      def main():
+        y = np.random.rand(100000000)
+        start = time.time()
+        sum(y)
+        end = time.time()
+        print(f"Elasped time: {end - start} seconds")
+
+      if __name__ == "__main__":
+        main()
+      ```
+    - Check that the code runs
+    - Commit and push changes
+- On computer 2
+  - Fetch all recent changes
+  - Rebase `faster-sum` on `sum`
+    - there should be some conflicts due to modification of the same line by both branches
+    - follow git-printed instructions to solve the conflict (`git status` usually helps)
+  - Check that the script still runs as expected
+- If you have time, you can rerun this scenario by merging `sum` into `faster-sum` instead of rebasing.
