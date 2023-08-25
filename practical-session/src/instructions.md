@@ -53,11 +53,17 @@ git config --global core.editor "nano"
 
 * Use `git status` a lot: before and after every `git` command!
 * You can print the entire graph with `git log --all --graph --oneline`
+* Don't hesitate to look for answers on Google!
 
 #### Warnings
 
 * Be very careful whenever you use `-f` or `--force` in any command!
   Any forced operation might delete data permanently.
+
+#### Links and references
+
+* Official git documentation: [https://git-scm.com/docs](https://git-scm.com/docs)
+* Atlassian's git tutorial: [https://www.atlassian.com/git/tutorials/setting-up-a-repository](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
 
 ### Agenda
 
