@@ -49,6 +49,16 @@ git config core.editor notepad
 git config --global core.editor "nano"
 ```
 
+#### A few tips
+
+* Use `git status` a lot: before and after every `git` command!
+* You can print the entire graph with `git log --all --graph --oneline`
+
+#### Warnings
+
+* Be very careful whenever you use `-f` or `--force` in any command!
+  Any forced operation might delete data permanently.
+
 ### Agenda
 
 The goal of this practical session is to demonstrate how git enables collaborative work by allowing you to share your contributions and to manage conflicts.
