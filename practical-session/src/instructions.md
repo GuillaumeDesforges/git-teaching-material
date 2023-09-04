@@ -40,7 +40,7 @@ By default, the editor used in the terminal could be "vim", which can be a bit r
 **On Windows**, change it to "notepad.exe"
 
 ```
-git config core.editor notepad
+git config --global core.editor notepad
 ```
 
 **On Linux and MacOS**, change it to "nano" (read about [nano](https://help.ubuntu.com/community/Nano)).
