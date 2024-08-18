@@ -1,5 +1,13 @@
 # Git collaboration - a practical session
 
+In this practical session, you will:
+
+- Understand basic Git concepts and terminology.
+- Configure Git on your machine.
+- Set up a GitHub repository.
+- Perform basic Git operations: commit, fetch, branch, merge, and push.
+- Resolve merge conflicts collaboratively.
+
 ## Before we start
 
 ### Requirements
@@ -8,57 +16,61 @@ These exercises are designed to be done in pairs.
 
 Each will need
 
-- a laptop with git installed
+- A laptop with git installed
   - ["Installing Git"](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- a GitHub account with SSH keys installed
+- A GitHub account with SSH keys installed
   - ["Getting started with your GitHub account"](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
   - ["Adding a new SSH key to your GitHub account"](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
 You will be asked to open a terminal (also called a "shell") to use git commands.
+
 - On Windows, you can use the "Windows Console" (`cmd.exe`), or on more recent version versions of Windows either "PowerShell" or the built-in "Terminal" application.
 - On MacOS, you can use the built-in "Terminal" application.
 - On Linux, use the terminal emulator of your choice.
 
 #### Configure git
 
-If you've never used git before, you will need to configure it on your laptop.
+Before we start, we need to configure git.
 Use the following commands (replace with your own information).
 
-```
-git config --global user.name "First name Last name"
-git config --global user.email firstname.lastname@example.com
+```bash
+git config --global "user.name" "First name Last name"
+git config --global "user.email" "firstname.lastname@example.com"
 ```
 
 You should also make sure that the default name for the main branch is "main".
 
-```
-git config --global init.defaultBranch main
+```bash
+git config --global "init.defaultBranch" "main"
 ```
 
 By default, the editor used in the terminal could be "vim", which can be a bit rough for beginners.
 
 **On Windows**, change it to "notepad.exe"
 
-```
-git config --global core.editor notepad
+```bash
+git config --global "core.editor" "notepad"
 ```
 
 **On Linux and MacOS**, change it to "nano" (read about [nano](https://help.ubuntu.com/community/Nano)).
 
-```
-git config --global core.editor "nano"
+```bash
+git config --global "core.editor" "nano"
 ```
 
 #### A few tips
 
-* Use `git status` a lot: before and after every `git` command!
-* You can print the entire graph with `git log --all --graph --oneline`
-* Don't hesitate to look for answers on Google!
+* Use the command `git status` before and after every `git` command to see what is happening.
+* Before asking any question, make sure you've looked at what `git status` says.
+* Have I told you about the command `git status`? Really, it is useful.
+* You can print the entire graph with the command `git log --all --graph --oneline`.
+* Don't hesitate to look for answers on Google or ask questions to ChatGPT.
 
 #### Warnings
 
-* Be very careful whenever you use `-f` or `--force` in any command!
+* Be very careful whenever you use `-f` or `--force` as an option of any command!
   Any forced operation might delete data permanently.
+* Although you will create and edit Python files, you do NOT need Python for this session.
 
 #### Links and references
 
@@ -71,11 +83,11 @@ The goal of this practical session is to demonstrate how git enables collaborati
 
 You will learn
 
-- how to make commits
-- how to fetch commits made by others
-- how to create a branch and switch between branches
-- how to merge your changes with others
-- how to share your commits
+- How to make commits;
+- How to fetch commits made by others;
+- How to create a branch and switch between branches;
+- How to merge your changes with others;
+- How to share your commits.
 
 ## Collaboration using git
 
@@ -94,58 +106,58 @@ This has to be done by only one of the two partners, as it will be shared.
 
 1. Create a repository
 
-  - click on "+" in the top right corner
+  - Click on "+" in the top right corner
 
     ![](./imgs/new-repo/Capture1.PNG)
 
-  - click on "New repository"
+  - Click on "New repository"
 
     ![](./imgs/new-repo/Capture2.PNG)
 
-  - you can name your repository however you want
+  - You can name your repository however you want
     > Usually, we use lowercase characters (`a`, `b`, `c`, ...) spearated by hyphens `-` instead of spaces.
     > Example: if your project is name "My awesome Git project", name your repository `my-awesome-git-project`.
-  - write a description
+  - Write a description
     > Usually a single sentence.
-  - select "Private"
+  - Select "Private"
 
     ![](./imgs/new-repo/Capture3.PNG)
 
-  - click on the "New repository" button at the end
+  - Click on the "New repository" button at the end
 
     ![](./imgs/new-repo/Capture4.PNG)
 
 2. Give access to you partner
 
-  - go to the web page of your new repository (if you just created it, you should be on it already)
-  - go to the repository settings ("Settings" tab)
+  - Go to the web page of your new repository (if you just created it, you should be on it already)
+  - Go to the repository settings ("Settings" tab)
 
     ![](./imgs/new-repo/Capture5.PNG)
 
-  - go to the "Collaborators" tab (under "Access" group in the left panel)
+  - Go to the "Collaborators" tab (under "Access" group in the left panel)
 
     ![](./imgs/new-repo/Capture6-1.PNG)
 
-    you might be required to authenticate via MFA (if not, skip this)
+    You might be required to authenticate via MFA (if not, skip this)
 
     ![](./imgs/new-repo/Capture6-2.PNG)
 
-  - click on "Add people"
+  - Click on "Add people"
 
     ![](./imgs/new-repo/Capture7.PNG)
 
-  - find and add your partner
+  - Find and add your partner
 
-    - type their GitHub "handle" in the text input
-    - suggestions should be shown, click on the right one
+    - Type their GitHub "handle" in the text input
+    - Suggestions should be shown, click on the right one
 
       ![](./imgs/new-repo/Capture8.PNG)
 
-    - when found, click on the button below "Add XXX to this repository"
+    - When found, click on the button below "Add XXX to this repository"
 
       ![](./imgs/new-repo/Capture9.PNG)
 
-#### Download the repository to your laptop
+#### Create a local copy of the repository on your laptop
 
 On the repository web page in GitHub, as the project is empty for now, you'll find a "Quick setup" banner.
 Click on the "SSH" button in there, you should see something in the form of:
@@ -154,23 +166,23 @@ Click on the "SSH" button in there, you should see something in the form of:
 git@github.com:yourHandle/your-repo-name.git
 ```
 
-Copy this url, and clone it to your laptop, for example:
+Copy this URL, and clone it to your laptop, for example:
 
-```
+```bash
 git clone git@github.com:yourHandle/your-repo-name.git
 ```
 
-where `your-repo-name` is replaced by the name of your own repository.
+Where `your-repo-name` is replaced by the name of your own repository.
 
 A folder must have been created with this name (e.g. `your-repo-name`).
 
-Change your working directory to it:
+Change the shell [working directory](https://en.wikipedia.org/wiki/Working_directory) to it using the command `cd`.
 
-```
+```bash
 cd your-repo-name
 ```
 
-where `your-repo-name` is replaced by the name of your own repository.
+Where `your-repo-name` is replaced by the name of your own repository.
 
 Congratulations!
 You just "cloned" the repository from the remote (GitHub).
