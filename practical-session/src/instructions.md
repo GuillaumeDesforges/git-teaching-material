@@ -207,6 +207,9 @@ One person will play the role of "computer 1" and the other the role of "compute
 
 We'll start with the simplest.
 
+In this scenario, you will learn how to create a new file, commit changes locally, and synchronize them with a remote repository without encountering conflicts.
+You will also understand how to fetch changes made by collaborators and integrate them into your local repository.
+
 - On computer 1
   - Create a new file in the folder of the repository, with the following Python script
     ```python
@@ -229,9 +232,17 @@ You can check that the remote repository was properly updated by refreshing the 
 - On computer 1
   - Fetch these changes, check that you have the updated `script.py` file locally
 
+##### Questions
+
+1. Why do you need to commit your changes locally before pushing them to a remote repository?
+2. How can you make sure that both collaborators have the latest version of the project?
+
 #### Second scenario: collaboration with conflict
 
-On the same repository
+In this scenario, you will learn how to handle situations where two collaborators make conflicting changes to the same file.
+You will practice resolving merge conflicts, ensuring that both sets of changes are preserved and properly integrated into the project.
+
+On the same repository as the first scenario:
 
 - On computer 1
   - Edit `script.py`:
@@ -258,7 +269,18 @@ On the same repository
 - On computer 1
   - Fetch these changes, check that you have the updated `script.py` file locally
 
+##### Questions
+
+3. What caused the conflict in this scenario? How did Git help identify it?
+4. What does it mean to "resolve" this conflict?
+5. What could go wrong if conflicts are resolved incorrectly?
+6. After resolving the conflict, what steps did you take to ensure that all changes were correctly integrated?
+
 #### Third scenario: use a Pull Request
+
+In this scenario, you will learn how to use Git branches to manage separate lines of development.
+You will also learn how to create a pull request, review code changes collaboratively, and merge approved changes into the main branch.
+This process emphasizes code review and collaboration in a team setting.
 
 On the same repository
 
@@ -305,7 +327,14 @@ On the same repository
     - on the remote repository
     - locally
 
+##### questions
+
+7. What are the advantages of using a pull request for managing changes in a collaborative project?
+
 #### Fourth scenario: rebase vs merge
+
+In this scenario, you will learn the difference between merging and rebasing in Git.
+You will practice rebasing a branch onto another, resolving conflicts that arise.
 
 On the same repository
 
@@ -402,3 +431,8 @@ On the same repository
     - follow git-printed instructions to solve the conflict (`git status` usually helps)
   - Check that the script still runs as expected
 - If you have time, you can rerun this scenario by merging `sum` into `faster-sum` instead of rebasing.
+
+##### Questions
+
+8. How did rebasing affect the commit history compared to merging? Do you see any benefit?
+9. In what situations might one approach be preferred over the other?
