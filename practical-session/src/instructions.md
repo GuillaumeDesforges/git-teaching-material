@@ -74,6 +74,7 @@ git config --global "core.editor" "nano"
 
 #### Links and references
 
+* GitHub's git cheat sheet: [https://education.github.com/git-cheat-sheet-education.pdf](https://education.github.com/git-cheat-sheet-education.pdf)
 * Official git documentation: [https://git-scm.com/docs](https://git-scm.com/docs)
 * Atlassian's git tutorial: [https://www.atlassian.com/git/tutorials/setting-up-a-repository](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
 
