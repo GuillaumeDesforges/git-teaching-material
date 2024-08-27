@@ -254,6 +254,7 @@ On the same repository as the first scenario:
     ```
   - Commit this change
   - Push this commit to the remote repository
+
 - On computer 2
   - Edit `script.py`
     ```python
@@ -302,6 +303,7 @@ On the same repository
     - See complete instructions on GitHub:
       ["Creating a pull request"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
   - Assign your partner as a "Reviewer"
+
 - On computer 2
   - Check out your notifications on GitHub
     ([https://github.com/notifications](https://github.com/notifications))
@@ -317,10 +319,13 @@ On the same repository
     - Once done, click on "Start review"
     - For now, the comment has not been posted. You can make multiple comments before posting them.
     - Once you have made all your comments, click on "Review changes" on the top right, then "Submit review"
+
 - On computer 1
   - Check out your notifications on GitHub
   - Check out the review, reply or apply requested changes
+
 - You can repeat this process as much as you'd like, until both parties are satisfied
+
 - On computer 1
   - Click on "Merge Pull Request"
   - Pull the changes of the main branch
@@ -367,6 +372,7 @@ On the same repository
   - Check that the code runs
   - Commit these changes
   - Push to the remote repository
+
 - On computer 2
   - Fetch previous changes
   - Create another branch `faster-sum` which starts from the `sum` branch (i.e. checkout `sum` then create the branch)
@@ -399,9 +405,10 @@ On the same repository
   - Check that the code still runs
   - Commit these changes
   - Push to the remote repository
+
 - On computer 1
   - **On branch `sum`**
-    - Modify the whole file as follows: 
+    - Modify the whole file as follows:
       ```python
       import numpy as np
       import time
@@ -425,26 +432,89 @@ On the same repository
       ```
     - Check that the code runs
     - Commit and push changes
+
 - On computer 2
   - Fetch all recent changes
   - Rebase `faster-sum` on `sum`
     - there should be some conflicts due to modification of the same line by both branches
     - follow git-printed instructions to solve the conflict (`git status` usually helps)
   - Check that the script still runs as expected
-- If you have time, you can rerun this scenario by merging `sum` into `faster-sum` instead of rebasing.
+
+- On computer 1:
+  - Review and merge the branch into `main`
 
 ##### Questions
 
 8. How did rebasing affect the commit history compared to merging? Do you see any benefit?
 9. In what situations might one approach be preferred over the other?
 
-#### Fifth scenario: rewriting history with rebase
+#### Fifth scenario: stashing changes
+
+In this scenario, you will learn how to temporarily save uncommitted changes using Git stash, and how to apply or discard these changes later.
+This is useful when you need to switch branches or work on something else without losing your current work.
+
+- On computer 1:
+  - Start by creating a new branch `feature-A` from the `main` branch
+  - Modify `script.py` by adding a new function:
+     ```python
+     def new_feature():
+         print("This is a new feature")
+     ```
+  - You now need to switch back to the `main` branch
+     Use `git stash` to temporarily save your changes
+  - Switch to the `main` branch
+  - Make some changes in `main`, commit the changes, and push them to the remote repository
+  - Switch back to the `feature-A` branch and reapply your stashed changes
+
+- On computer 2:
+  - Review and merge `feature-A` into `main`
+
+##### Questions
+
+10. Why might you use `git stash` instead of committing incomplete changes?
+11. How does stashing help prevent conflicts when switching branches?
+12. What is the difference between `git stash apply` and `git stash pop`?
+
+#### Sixth scenario: cherry-picking commits
+
+In this scenario, you will learn how to cherry-pick specific commits from one branch and apply them to another branch.
+This is useful when you need to apply a bug fix or feature to multiple branches without merging.
+
+- On computer 1:
+  - Create a new branch `feature-B` from `main`
+  - Add a bug fix to `script.py`:
+     ```python
+     def bug_fix():
+         print("Critical bug fixed!")
+     ```
+  - Commit and push these changes
+  - Add a new feature to `script.py`:
+     ```python
+     def feature_c():
+         print("Feature C is now available!")
+     ```
+  - Commit and push these changes
+  - Oh no! We realized that the bug fix is critical and needs to be applied to the `main` branch immediately without merging `feature-B`!
+  - On `main`, use `git cherry-pick` to apply the bug fix commit to `main`, but not the feature
+  - Push the changes to `main`
+
+- On computer 2:
+  - Review and merge `feature-B` into `main`
+
+
+##### Questions
+
+13. What are some scenarios where cherry-picking is more appropriate than merging?
+14. How does cherry-picking affect the commit history, and what should you be careful about?
+15. What are the potential risks of cherry-picking, especially in larger projects?
+
+#### Seventh scenario: rewriting history with rebase
 
 In this scenario, you will learn how to use Git rebase to rewrite commit history by renaming a commit message.
 This is useful for correcting mistakes or clarifying commit messages after they have been made.
 
 - On computer 1
-  - Create a new branch named `feature-edit`
+  - Create a new branch named `feature-C`
   - Create a file `multiply.py` with the following content:
     ```python
     def multiply(a, b):
@@ -457,52 +527,38 @@ This is useful for correcting mistakes or clarifying commit messages after they 
   - Commit these changes with the message `"Initial commit of multiplication function"`.
 
 - On computer 2
-  - Fetch the new branch created by Computer 1.
-  - Check out the `feature-edit` branch to start working on it:
-    ```bash
-    git checkout feature-edit
-    ```
-  - Review the commit history using:
-    ```bash
-    git log --oneline
-    ```
+  - Fetch the new branch created by Computer 1
+  - Check out the `feature-C` branch to start working on it
+  - Review the commit history using `git log`
   - Notice that the commit message `"Initial commit of multiplication function"` is not very descriptive.
     You decide to rename it to `"Add multiply.py with basic multiplication function"` to be more specific.
 
-  - Start an interactive rebase to rename the commit:
-    ```bash
-    git rebase -i HEAD~1
-    ```
-  - In the editor that opens, change the word `pick` to `reword` for the commit you want to rename.
-  - Save and close the editor. Git will prompt you to edit the commit message.
-  - Change the commit message to `"Add multiply.py with basic multiplication function"`.
-  - Save and close the editor to complete the rebase.
+  - Start an interactive rebase to rename the commit
+  - In the editor that opens, change the word `pick` to `reword` for the commit you want to rename
+  - Save and close the editor. Git will prompt you to edit the commit message
+  - Change the commit message to `"Add multiply.py with basic multiplication function"`
+  - Save and close the editor to complete the rebase
 
 - On computer 2
-  - Push the updated commit to the remote repository:
-    ```bash
-    git push --force-with-lease
-    ```
+  - Push the updated commit to the remote repository
     Note: Use `--force-with-lease` instead of `--force` to prevent accidentally overwriting other collaborators' work.
 
 - On computer 1
-  - Fetch the latest changes from the remote repository:
-    ```bash
-    git pull
-    ```
+  - Fetch the latest changes from the remote repository
   - Review the commit history to confirm that the commit message has been successfully updated.
+  - Review and merge `feature-C` into `main`
 
 ##### Questions
 
-10. What are the risks associated with rewriting commit history using `git rebase -i`? How can these risks be mitigated?
-11. How did using `--force-with-lease` protect the integrity of the remote repository when you pushed the rewritten commit?
+16. What are the risks associated with rewriting commit history using `git rebase -i`? How can these risks be mitigated?
+17. How did using `--force-with-lease` protect the integrity of the remote repository when you pushed the rewritten commit?
 
-#### Sixth scenario: recovering lost commits with git reflog
+#### Eighth scenario: recovering lost commits with git reflog
 
 In this scenario, you'll explore how to recover from a mistake where a commit appears to be lost. You will use `git reflog`, a powerful tool that keeps track of all the changes made in the repository, even those that are not reflected in the branch history.
 
 - On computer 1
-  - Create a new branch named `feature-addition`.
+  - Create a new branch named `feature-D`.
   - Create a file `addition.py` with the following content:
     ```python
     def add(a, b):
@@ -513,191 +569,61 @@ In this scenario, you'll explore how to recover from a mistake where a commit ap
         print(f"5 plus 7 is {result}")
     ```
   - Commit these changes with the message `"Add addition.py with basic addition function"`.
-  - Push the `feature-addition` branch to the remote repository.
+  - Push the `feature-D` branch to the remote repository.
 
 - On computer 2
-  - Fetch and check out the `feature-addition` branch:
-    ```bash
-    git checkout feature-addition
-    ```
-  - You decide to reset the branch to the previous state by mistake:
+  - Fetch and check out the `feature-D` branch
+  - Run the command:
     ```bash
     git reset --hard HEAD~1
     ```
-  - Realize that this reset has removed the last commit, causing the `addition.py` file to disappear. Now, you need to recover this lost commit.
-
-- On computer 2
-  - Use `git reflog` to view the history of all actions in the repository:
-    ```bash
-    git reflog
-    ```
-  - Identify the commit that was reset (you should see the original commit message `"Add addition.py with basic addition function"` in the reflog output).
-  - Recover the lost commit by resetting back to it:
-    ```bash
-    git reset --hard <commit-hash>
-    ```
-    Replace `<commit-hash>` with the hash of the lost commit you want to recover.
-
-- On computer 2
-  - Verify that the `addition.py` file is restored and that the commit is back in the branch history:
-    ```bash
-    git log --oneline
-    ```
-  - Push the recovered commit back to the remote repository to ensure all work is preserved:
-    ```bash
-    git push --force-with-lease
-    ```
+  - Realize that this reset has removed the last commit from your local history, causing the `addition.py` file to disappear. Now, you need to recover this lost commit.
+  - Use `git reflog` to view the history of all actions in the repository
+  - Identify the commit that was reset (you should see the original commit message `"Add addition.py with basic addition function"` in the reflog output)
+  - Recover the lost commit (hint: either reset or copy the commit)
+  - Verify that the `addition.py` file is restored and that the commit is back in the branch history
+  - Push the recovered commit back to the remote repository to ensure all work is preserved
 
 - On computer 1
-  - Fetch the latest changes from the remote repository to confirm that the `addition.py` file and the commit have been successfully restored:
-    ```bash
-    git pull
-    ```
+  - Fetch the latest changes from the remote repository to confirm that the `addition.py` file and the commit have been successfully restored
+  - Review and merge `feature-C` into `main`
 
 ##### Questions
 
-12. What is the purpose of `git reflog`, and how does it differ from `git log`?
-13. Why is it important to be cautious when using commands like `git reset --hard`? What could have happened if `git reflog` was not available?
-14. How did `git reflog` help you recover from the mistake? What are some scenarios where this tool might be essential in a real project?
+18. What is the purpose of `git reflog`, and how does it differ from `git log`?
+19. Why is it important to be cautious when using commands like `git reset --hard`? What could have happened if `git reflog` was not available?
+20. How did `git reflog` help you recover from the mistake? What are some scenarios where this tool might be essential in a real project?
 
-#### Seventh scenario: stashing changes
-
-In this scenario, you will learn how to temporarily save uncommitted changes using Git stash, and how to apply or discard these changes later.
-This is useful when you need to switch branches or work on something else without losing your current work.
-
-- On computer 1:
-  1. Start by creating a new branch `feature-A` from the `main` branch.
-     ```bash
-     git checkout -b feature-A
-     ```
-  2. Modify `script.py` by adding a new function:
-     ```python
-     def new_feature():
-         print("This is a new feature")
-     ```
-  3. You now need to switch back to the `main` branch.
-     Use `git stash` to temporarily save your changes.
-     ```bash
-     git stash
-     ```
-  4. Switch to the `main` branch.
-     ```bash
-     git checkout main
-     ```
-  5. Make some changes in `main`, commit the changes, and push them to the remote repository.
-     ```bash
-     # Make changes to fix the bug
-     git commit -am "Fix critical bug in main"
-     git push origin main
-     ```
-  6. Switch back to the `feature-A` branch and reapply your stashed changes.
-     ```bash
-     git checkout feature-A
-     git stash apply
-     ```
-
-##### Questions
-
-15. Why might you use `git stash` instead of committing incomplete changes?
-16. How does stashing help prevent conflicts when switching branches?
-17. What is the difference between `git stash apply` and `git stash pop`?
-
-### Eighth scenario: squashing commits before merging
+#### Ninth scenario: squashing commits before merging
 
 In this scenario, you will learn how to squash multiple commits into a single commit before merging a branch.
 This is useful to simplify the history.
 
 - On computer 1:
-  1. Create a new branch `feature-B` from `main`.
-     ```bash
-     git checkout -b feature-B
-     ```
-  2. Add a new feature by modifying `script.py` in several steps:
+  - Create a new branch `feature-E` from `main`
+  - Add a new feature by modifying `script.py` in several steps:
      - First commit:
        ```python
-       def feature_b_part1():
-           print("Feature B - Part 1")
-       ```
-       ```bash
-       git commit -am "Add part 1 of feature B"
+       def feature_e_part1():
+           print("Feature E - Part 1")
        ```
      - Second commit:
        ```python
-       def feature_b_part2():
-           print("Feature B - Part 2")
-       ```
-       ```bash
-       git commit -am "Add part 2 of feature B"
+       def feature_e_part2():
+           print("Feature E - Part 2")
        ```
      - Third commit:
        ```python
-       def feature_b_part3():
-           print("Feature B - Part 3")
+       def feature_e_part3():
+           print("Feature E - Part 3")
        ```
-       ```bash
-       git commit -am "Add part 3 of feature B"
-       ```
-  3. Before merging `feature-B` into `main`, use interactive rebase to squash the three commits into one:
-     ```bash
-     git rebase -i HEAD~3
-     ```
-  4. During the rebase process, mark the second and third commits as `squash` or `s` to combine them with the first.
-  5. Edit the commit message as needed, save, and close the editor.
-  6. Merge the squashed commit into `main`.
-     ```bash
-     git checkout main
-     git merge feature-B
-     git push origin main
-     ```
+  - Before merging `feature-E` into `main`, use interactive rebase to squash the three commits into one
+  - Push the branch
+
+- On computer 2:
+  - Review and merge `feature-E` into `main`
 
 ##### Questions
 
-18. How does squashing affect the ability to track the history of changes?
-
-### Ninth scenario: cherry-picking commits
-
-In this scenario, you will learn how to cherry-pick specific commits from one branch and apply them to another branch.
-This is useful when you need to apply a bug fix or feature to multiple branches without merging.
-
-- On computer 1:
-  1. Create a new branch `feature-C` from `main`.
-     ```bash
-     git checkout -b feature-C
-     ```
-  2. Add a new feature to `script.py`:
-     ```python
-     def feature_c():
-         print("Feature C is now available!")
-     ```
-     ```bash
-     git commit -am "Add feature C"
-     ```
-  3. Also, add a bug fix in the same branch:
-     ```python
-     def bug_fix():
-         print("Critical bug fixed!")
-     ```
-     ```bash
-     git commit -am "Fix critical bug"
-     ```
-  4. Push the changes to the remote repository:
-     ```bash
-     git push origin feature-C
-     ```
-  5. Realize that the bug fix is critical and needs to be applied to the `main` branch immediately without merging `feature-C`.
-  6. On `main`, use `git cherry-pick` to apply the bug fix commit to `main`:
-     ```bash
-     git checkout main
-     git cherry-pick <commit-hash-of-bug-fix>
-     ```
-  7. Push the changes to `main`:
-     ```bash
-     git push origin main
-     ```
-
-##### Questions
-
-19. What are some scenarios where cherry-picking is more appropriate than merging?
-20. How does cherry-picking affect the commit history, and what should you be careful about?
-21. What are the potential risks of cherry-picking, especially in larger projects?
+21. How does squashing affect the ability to track the history of changes?
 
