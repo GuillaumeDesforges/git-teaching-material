@@ -1451,3 +1451,11 @@ title: Sarah
 * rebase
 * reflog
 * worktree
+
+---
+
+# Play to learn
+
+[Oh My Git!](https://blinry.itch.io/oh-my-git)
+
+![oh-my-git](https://img.itch.zone/aW1hZ2UvODA4ODEwLzUzMjgzMDMucG5n/original/VHUg%2By.png)
