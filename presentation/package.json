@@ -4,7 +4,7 @@
   "scripts": {
     "build:pdf": "marp --html src/slides.md -o dist/slides.pdf",
     "build:html": "marp --html src/slides.md -o dist/slides.html",
-    "build": "yarn build:pdf && yarn build:html",
+    "build": "yarn build:html && yarn build:pdf",
     "dev": "marp --html --server ."
   },
   "dependencies": {
